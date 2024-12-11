@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="time"></div>
+    <div class="time"></div>
+    <div class="time1"></div>
+    <script>
+   // 倒计时总时间
+    var totalTime = (47*60+58)*60+36;
+    var totalTime1 = ((47*60+58)*60+37)*1000 + 999;
+
+        function CountDown() {
+            if (totalTime >= 0) {
+                seconds = Math.floor(totalTime % 60); // 秒
+                minutes = Math.floor(totalTime / 60 % 60); // 分
+                hour = Math.floor(totalTime / 60 / 60 % 24); // 时
+                hour1 = Math.floor(totalTime / 60 / 60); // 时
+                day = Math.floor(totalTime / 60 / 60 / 24); // 天
+                // 天
+                timerMsg = 'Day Level: ' +
+                (day >= 10 ? day : "0" + day) + "天" +
+                (hour >= 10 ? hour : "0" + hour) + "时" +
+                (minutes >= 10 ? minutes : "0" + minutes) + "分" +
+                (seconds >= 10 ? seconds : "0" + seconds) + "秒";
+                //时
+                timerMsg1 = 'Countdown: ' +
+                (hour1 >= 10 ? hour1 : "0" + hour1) + ":" +
+                (minutes >= 10 ? minutes : "0" + minutes) + ":" +
+                (seconds >= 10 ? seconds : "0" + seconds);
+                // 在盒子里显示
+                var time = document.querySelector('#time')
+                var time1 = document.querySelector('.time')
+                time.innerHTML = timerMsg;
+                time1.innerHTML = timerMsg1;
+                totalTime--;
+            } else {
+                clearInterval(endTime);// 停止调用函数 
+                alert("时间到，计时结束!");
+            }
+        }
+
+        function updateCountdown() {
+            if (totalTime1 >= 0) {
+                millisecond = Math.floor(totalTime1 % 1000);//毫秒
+                seconds = Math.floor(totalTime1 /1000 % 60); // 秒
+                minutes = Math.floor(totalTime1 /1000 / 60 % 60); // 分
+                hour1 = Math.floor(totalTime1 /1000 / 60 / 60); // 时
+                //毫秒
+                timerMsg2 = 'Million Seconds: ' +
+                (hour1 >= 10 ? hour1 : "0" + hour1) + ":" +
+                (minutes >= 10 ? minutes : "0" + minutes) + ":" +
+                (seconds >= 10 ? seconds : "0" + seconds) + ":" +
+                (millisecond >= 10 ? millisecond : "0" + millisecond);
+                // 在盒子里显示
+                var time2 = document.querySelector('.time1')
+                time2.innerHTML = timerMsg2;
+                totalTime1 = totalTime1-10;
+            } else {
+                clearInterval(endTime1); // 停止调用函数 
+                alert("时间到，计时结束!");
+            }
+        }
+        endTime = setInterval("CountDown()", 1000); // 以毫秒为单位，每 1 秒调用一次 CountDown()
+        endTime1 = setInterval("updateCountdown()",10);
+    </script>
+</body>
+</html>

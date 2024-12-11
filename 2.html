@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .add {
+            width: 400px;
+            height: 40px;
+            color: rgb(240, 131, 54);
+            border: 1px solid rgb(225, 118, 42);
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .add:focus {
+            border: 1px solid white;
+        }
+    </style>
+</head>
+<body>
+    <input class="add" type="text" value="1000" onblur="addsum(value)">
+</body>
+<script>
+    var add = document.querySelector(".add");
+    function addsum(Value) {
+        var num = 0;
+        var Add = setInterval(function fn() {
+            if(num<Value && Value-num < Math.ceil(Value / 1000)) {
+                add.value=Value;
+            }
+            else if(num < Value) {
+                num+=Math.ceil(Value/1000);
+                add.value=num;
+            } else clearInterval(Add);
+        },1)
+    }
+</script>
+</html>

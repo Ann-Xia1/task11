@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul{ 
+            list-style: none;
+            width: 234px;
+            height: 2000px;
+            background: linear-gradient(to top, rgb(233, 214, 158), rgb(210, 162, 90), rgb(191, 167, 50));
+
+        }
+        
+        button {
+            position: relative;
+            left: 500px;
+            width: 60px;
+            height: 60px;
+            text-align: center
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <button>回到顶部</button>
+    <script>
+        document.querySelector('button').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
