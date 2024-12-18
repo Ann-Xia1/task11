@@ -1,0 +1,176 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日历</title>
+    <style>
+        .head {
+            width: 402px;
+            height: 407px;
+            margin: 0 auto;
+            border: 1px #999 solid;
+        }
+
+        div{
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        #calendar{ 
+            border-bottom: 1px black solid;
+            width:400px;
+            margin:auto;
+        }
+        button{
+            border:1px solid #e6e5e5;
+            background-color: white;
+            border-radius: 10px;
+            width:30px;
+            height: 30px;
+        }
+        #month{
+            width: 320px;
+            float:left;
+            height: 40px;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+        .everyday{
+            width:56px;
+            float: left;
+            padding: 10px 0;
+            /* border: 1px solid #000; */
+        }
+
+        /* .Day {
+            
+        } */
+
+        .everyday:hover {
+            background-color: aqua;
+        }
+
+        .everyday:active {
+            background-color: #999;
+        }
+
+        .time {
+            display: flex;
+            justify-content: space-around;
+        }
+    </style>
+</head>
+<body onload="showDate();">
+    <div class="head">
+       <div id="calendar">
+           <div class="time">
+               <button onclick="lastMonth();"><</button>
+               <span id="dqrq"></span>
+               <button onclick="nextMonth();">></button>
+           </div>
+           <div class="Day">
+               <div class="everyday">Su</div>
+               <div class="everyday">Mo</div>
+               <div class="everyday">Tu</div>
+               <div class="everyday">We</div>
+               <div class="everyday">Th</div>
+               <div class="everyday">Fr</div>
+               <div class="everyday">Sa</div>
+           </div>
+           <div id="day"></div>
+       </div> 
+    </div>
+</body>
+<script>
+    var today=new Date();
+    var year=today.getFullYear();
+    var month=today.getMonth()+1;
+    var day=today.getDate();
+    var days=0;
+    function count(){
+        if(month!=2){
+            if((month==4)||(month==6)||(month==9)||(month==11)){
+                days=30;
+            }else{
+                days=31;
+            }
+        }else{
+            if((year%4)==0&&(year%100)!=0||year%400==0){
+                days=29;
+            }else{
+                days=28;
+            }
+        }
+    }
+    function showMonth(){
+        var year_month=year+"年"+month+"月";
+        document.getElementById("dqrq").innerHTML=year_month;
+    }
+    
+    function showDate(){
+        showMonth();
+        count();
+        var firstdate=new Date(year,month-1,1);
+        var xq=firstdate.getDay();
+        var daterow=document.getElementById("day");
+        daterow.innerHTML="";
+        if(xq!=0){
+            for(var i=0;i<xq;i++){
+                var dayElement=document.createElement("div");
+                dayElement.className="everyday";
+                dayElement.innerHTML="";
+                daterow.appendChild(dayElement);
+            }
+        }
+        for(var j=1;j<=days;j++){
+            var dayElement=document.createElement("div");
+            dayElement.className="everyday";
+            dayElement.innerHTML=j+"";
+            // if(j==day){
+            //     for(var n=1;n<=12;n++) {
+            //         if(n==today.getMonth()+1) {
+            //             console.log(n);
+            //             dayElement.style.backgroundColor="#46b0f8";
+            //             console.log(dayElement);
+            //         }
+            //     }
+            // }
+            daterow.appendChild(dayElement);
+        }
+        console.log(days);
+        var lastdate=new Date(year,month-1,days);
+        console.log(lastdate);
+        var xqs=lastdate.getDay();
+        if(xqs!=6){
+            for(var i=6;i>xqs;i--){
+                var dayElement=document.createElement("div");
+                dayElement.className="everyday";
+                dayElement.innerHTML="";
+                daterow.appendChild(dayElement);
+            }
+        }
+    }
+
+    function lastMonth(){
+        if(month>1) {
+            month=month-1;
+        }else{
+            month=12;
+            year=year-1;
+        }
+        showDate();
+    }
+
+    function nextMonth(){
+        if(month<12) {
+            month=month+1;
+        }else{
+            month=1;
+            year=year+1;
+        }
+        showDate();
+    }
+</script>
+</html>

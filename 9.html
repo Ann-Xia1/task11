@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: black;
+        }
+
+        .main {
+            width: 260px;
+            height: 60px;
+            font-size: 30px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: absolute;
+            top: 45%;
+            left: 40%;
+        }
+
+        .btn {
+            display: none;
+        }
+
+        .bg {
+            width: 100px;
+            height: 50px;
+            background-color: rgba(37, 64, 240 ,1);
+            border-radius: 40px;
+            position: relative;
+        }
+
+        .btn:checked ~ .text1::after {
+            position: absolute;
+            left: 5px;
+            top:5px;
+        }
+
+        .btn:checked ~ .text::after {
+            position: absolute;
+            left: 5px;
+            top:5px;
+            width: 0px;
+        }
+
+        .text::after {
+            content: '';
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(37, 64, 240 ,1);
+            border-radius: 50%;
+            position: absolute;
+            left: 43px;
+            top: 2px;
+            transition: 1000ms;
+        }
+
+        .text1::after {
+            content: '';
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #edab48;
+            border-radius: 50%;
+            position: absolute;
+            left: 55px;
+            top: 5px;
+            transition: 1000ms;
+        }
+
+        .sun {
+            position: absolute;
+            left: 11px;
+            top: 11px;
+        }
+
+        .moon {
+            position: absolute;
+            left: 66px;
+            top: 11px;
+        }
+
+    </style>
+</head>
+<body>
+   <div class="main">
+        javascript
+        <div class="bg">
+            <input type="checkbox" class="btn" id="btn">
+            <label for="btn" class="text1"></label>
+            <label for="btn" class="text"></label>
+        </div>
+   </div>
+</body>
+<script>
+    var checkbox = document.querySelector('.btn');
+    var body = document.querySelector('body');
+    var main = document.querySelector('.main');
+    var text  = document.querySelector('.text');
+    checkbox.addEventListener('change', function() {
+    if(this.checked) {
+        body.style.backgroundColor = '#fff';
+        main.style.color = "#000";
+        
+
+      
+    } else {
+        body.style.backgroundColor = '#000';
+        main.style.color = "#fff";
+
+
+    }
+  });
+</script>
+</html>

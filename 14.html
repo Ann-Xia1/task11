@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .btn1 {
+            width: 100px;
+            height: 35px;
+            background-color: cornflowerblue;
+            border: none;
+            border-radius: 30px;
+            color: aliceblue;
+            position: absolute;
+            top: 45%;
+            left: 45%;
+
+        }
+
+        .btn2 {
+            width: 50px;
+            height: 50px;
+            background-color: #fff;
+            border: 1px solid #000;
+            border-radius: 50%;
+            font-size: 40px;
+            position: absolute;
+            left: 35%;
+            top: 85%;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: cornflowerblue;
+            border-radius: 5px;
+            color: aliceblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            margin: 200px auto;
+            z-index: 1;
+            display: none;
+            animation:mymove 0.2s;
+        }
+
+        @keyframes mymove
+        {
+            from {top:-5px;}
+            to {top:10px;}
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        我是弹窗
+        <button class="btn2">×</button>
+    </div>
+    <button class="btn1">换出弹窗</button>
+</body>
+<script>
+    var btn1 = document.querySelector('.btn1');
+    var btn2 = document.querySelector('.btn2');
+    var box = document.querySelector('.box');
+    btn1.onclick = function(){
+        box.style.display = 'flex';
+    }
+
+    btn2.onclick = function(){
+        box.style.display = 'none';
+    }
+
+</script>
+</html>

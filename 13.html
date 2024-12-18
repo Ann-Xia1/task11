@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 150px;
+            height: 35px;
+            background-color: aquamarine;
+            border-radius: 30px;
+            margin: 200px auto;
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .box ul {
+            height: 200%;
+            animation: identifier 1s linear infinite;
+        }
+
+        ul li {
+            font-size: 20px;
+            list-style: none;
+            height: 35px;
+            line-height: 35px;
+
+        }
+
+        @keyframes identifier {
+            100% {
+                transform: translateY(-35px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li>hahaha</li>
+            <li>hahaha</li>
+        </ul>
+    </div>
+</body>
+</html>
