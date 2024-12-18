@@ -4,8 +4,96 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        h4 {
+            position: absolute;
+            top: 45%;
+            left: 45%;
+            font-size: 30px;
+        }
+
+        /* .bg{
+            display: flex;
+            flex-direction: column;
+        } */
+
+        .bg .line::before {
+            content: '';
+            position: absolute;
+            left: 80%;
+            top: -40%;
+            /* transform: translateX(-50%);  */
+            width: 1px;
+            height: 80%;
+            background: blue; 
+        }
+
+        .bg .lineNew::before {
+            content: '';
+            position: absolute;
+            left: 80%;
+            top: -20%;
+            /* transform: translateX(-50%);  */
+            width: 1px;
+            height: 80%;
+            background: blue; 
+        }
+
+        .bg .round {
+            width: 20px;
+            height: 20px;
+            border: 1px solid blue;
+            border-radius: 50%;
+            position: absolute;
+            left: 79.2%;
+            top: 40%;
+            cursor: pointer;
+            transition: transform .5s;
+        }
+
+    </style>
 </head>
 <body>
-    
+    <h4>javascript</h4>
+    <div class="bg">
+        <div class="line"></div>
+        <div class="round"></div>
+    </div>
 </body>
+<script>
+    var line = document.querySelector('.line');
+    var round = document.querySelector('.round');
+    var body = document.querySelector('body');
+    var h = document.querySelector('h4');
+    var count = 0;
+    round.onclick = function() {
+        count++;
+        if(count === 1) {
+            line.className = 'lineNew';
+            round.style.top = '60%'
+            body.style.backgroundColor = '#000';
+            h.style.color = "#fff";
+            setTimeout(function() {
+                line.className = 'line';
+                round.style.top = '40%'
+            }, 200); 
+        }
+        if (count === 2) {
+            line.className = 'lineNew';
+            round.style.top = '60%'
+            body.style.backgroundColor = '#fff';
+            h.style.color = "#000";
+            setTimeout(function() {
+                line.className = 'line';
+                round.style.top = '40%'
+                count = 0;
+            }, 200); 
+        }
+    }
+</script>
 </html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+           background-color: #fff;
+        }
+
+        .bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: #121111;
+            opacity: 0;
+        }
+
+        .out {
+            position: fixed;
+            left: 45%;
+            top: 45%;
+        }
+
+        .straight,
+        .askew {
+            width: 60px;
+            height: 60px;
+            background-color: #dbdbdb;
+            border-radius: 3px;
+        }
+
+        .straight {
+            position: absolute;
+            transform: rotate(0deg);
+            transition: transform 0.5s;
+        }
+
+        .askew {
+            position: relative;
+            transform: rotate(45deg);
+            transition: transfrom 0.5s;
+        }
+
+        .big {
+            position: absolute;
+            left: 13%;
+            top: 13%;
+            background-color: #333;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+        }
+        
+        .small {
+            position: absolute;
+            left: 11%;
+            top: 11%;
+            background-color: #dbdbdb;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            transform: translate(0px,0px);
+            /* transform: translate(1px,-10px); */
+           
+        }
+
+        h4 {
+            position: absolute;
+            top: 68%;
+            left: 42%;
+            font-size: 30px;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg"></div>
+    <div class="out">
+        <div class="straight"></div>
+        <div class="askew">
+            <div class="big">
+                <div class="small"></div>
+            </div>
+        </div>
+    </div>
+    <h4>javascript</h4>
+</body>
+<script>
+    var out = document.querySelector('.out');
+    var straight = document.querySelector('.straight');
+    var askew = document.querySelector('.askew');
+    var big = document.querySelector('.big');
+    var small = document.querySelector('.small');
+    var bg = document.querySelector('.bg');
+    var h = document.querySelector('h4');
+    var count = 0;
+    small.onclick = function() {
+        count++;
+        if(count === 1) {
+            // big.style.backgroundColor = "#fff";
+            // small.className = "smallNew";
+            // straight.className = "straightNew";
+            // askew.className = "askewNew";
+            h.style.color = '#fff';
+            bg.style.opacity = '1';
+            bg.style.transition = 'opacity 0.5s';
+            big.style.backgroundColor = '#dbdbdb';
+            small.style.backgroundColor = '#333';
+            small.style.transform = `translate(1px,-10px)`;
+            straight.style.backgroundColor = '#333';
+            straight.style.transform = `rotate(360deg)`;
+            askew.style.backgroundColor = '#333';
+            askew.style.transform = `rotate(315deg)`;
+
+
+        }
+        if(count === 2) {
+            // big.style.backgroundColor = "#000";
+            // small.className = "small";
+            // straight.className = "straight";
+            // askew.className = "askew";
+            h.style.color = '#000';
+            bg.style.opacity = '0';
+            bg.style.transition = 'opacity 0.5s';
+            big.style.backgroundColor = '#000';
+            small.style.backgroundColor = '#dbdbdb';
+            small.style.transform = `translate(0px,0px)`;
+            straight.style.backgroundColor = '#dbdbdb';
+            straight.style.transform = `rotate(0deg)`;
+            askew.style.backgroundColor = '#dbdbdb';
+            askew.style.transform = `rotate(45deg)`;
+            count = 0;
+        }
+    }
+</script>
+</html>
