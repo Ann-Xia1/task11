@@ -39,13 +39,13 @@
         .straight {
             position: absolute;
             transform: rotate(0deg);
-            transition: transform 0.5s;
+            transition: all 0.5s linear;
         }
 
         .askew {
             position: relative;
             transform: rotate(45deg);
-            transition: transfrom 0.5s;
+            transition: all 0.5s linear;
         }
 
         .big {
@@ -67,7 +67,7 @@
             height: 35px;
             border-radius: 50%;
             cursor: pointer;
-            transform: translate(0px,0px);
+            transform: translate(6px,6px);
             /* transform: translate(1px,-10px); */
            
         }
@@ -85,11 +85,9 @@
     <div class="bg"></div>
     <div class="out">
         <div class="straight"></div>
-        <div class="askew">
-            <div class="big">
-                <div class="small"></div>
-            </div>
-        </div>
+        <div class="askew"></div>
+        <div class="big"></div>
+        <div class="small"></div>
     </div>
     <h4>javascript</h4>
 </body>
@@ -114,11 +112,11 @@
             bg.style.transition = 'opacity 0.5s';
             big.style.backgroundColor = '#dbdbdb';
             small.style.backgroundColor = '#333';
-            small.style.transform = `translate(1px,-10px)`;
+            small.style.transform = `translate(14px,-2px)`;
             straight.style.backgroundColor = '#333';
             straight.style.transform = `rotate(360deg)`;
             askew.style.backgroundColor = '#333';
-            askew.style.transform = `rotate(315deg)`;
+            askew.style.transform = `rotate(405deg)`;
 
 
         }
@@ -132,7 +130,7 @@
             bg.style.transition = 'opacity 0.5s';
             big.style.backgroundColor = '#000';
             small.style.backgroundColor = '#dbdbdb';
-            small.style.transform = `translate(0px,0px)`;
+            small.style.transform = `translate(6px,6px)`;
             straight.style.backgroundColor = '#dbdbdb';
             straight.style.transform = `rotate(0deg)`;
             askew.style.backgroundColor = '#dbdbdb';
